@@ -1021,11 +1021,41 @@ body {
     border-top: 1px solid #374151;
     padding-top: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-legal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-legal a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+    color: #fff;
+}
+
+.footer-legal-sep {
+    color: #4b5563;
+    user-select: none;
 }
 
 .footer-bottom p {
     color: #9ca3af;
     font-size: 14px;
+    margin: 0;
 }
 
 .scroll-indicators-container {

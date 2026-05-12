@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service — FRM</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .legal-page {
+            min-height: 100vh;
+            background: #fafafa;
+            padding: 48px 20px 64px;
+        }
+        .legal-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 36px 28px 48px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        @media (min-width: 640px) {
+            .legal-inner {
+                padding: 48px 56px 56px;
+            }
+        }
+        .legal-back {
+            margin-bottom: 28px;
+        }
+        .legal-back a {
+            color: #10b981;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .legal-back a:hover {
+            text-decoration: underline;
+        }
+        .legal-content {
+            line-height: 1.75;
+            color: #374151;
+            font-size: 16px;
+        }
+        .legal-content h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 0.75em;
+            line-height: 1.25;
+        }
+        .legal-content h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin: 1.75em 0 0.65em;
+            padding-top: 0.25em;
+            border-top: 1px solid #e5e7eb;
+        }
+        .legal-content h2:first-of-type {
+            border-top: none;
+            margin-top: 0;
+            padding-top: 0;
+        }
+        .legal-content h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 1.25em 0 0.5em;
+        }
+        .legal-content p {
+            margin: 0.65em 0;
+        }
+        .legal-content ul,
+        .legal-content ol {
+            margin: 0.65em 0;
+            padding-left: 1.35em;
+        }
+        .legal-content li {
+            margin: 0.35em 0;
+        }
+        .legal-content hr {
+            border: none;
+            border-top: 1px solid #e5e7eb;
+            margin: 1.5em 0;
+        }
+        .legal-content a {
+            color: #059669;
+            word-break: break-word;
+        }
+        .legal-content a:hover {
+            text-decoration: underline;
+        }
+        .legal-content strong {
+            color: #1f2937;
+        }
+        .legal-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+            font-size: 0.9375rem;
+        }
+        .legal-content th,
+        .legal-content td {
+            border: 1px solid #e5e7eb;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .legal-content th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #111827;
+        }
+        .legal-content blockquote {
+            margin: 0.75em 0;
+            padding-left: 1em;
+            border-left: 3px solid #10b981;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <main class="legal-page">
+        <div class="legal-inner">
+            <p class="legal-back"><a href="../index.html">← Back to FRM</a></p>
+            <div id="legal-body" class="legal-content">Loading…</div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/marked@14/marked.min.js"></script>
+    <script>
+        (function () {
+            var el = document.getElementById('legal-body');
+            fetch('TERMS_OF_SERVICE.md')
+                .then(function (r) {
+                    if (!r.ok) throw new Error('Failed to load');
+                    return r.text();
+                })
+                .then(function (text) {
+                    el.innerHTML = typeof marked !== 'undefined' && marked.parse
+                        ? marked.parse(text)
+                        : '<pre>' + text.replace(/</g, '&lt;') + '</pre>';
+                })
+                .catch(function () {
+                    el.textContent = 'Could not load the Terms of Service. Open TERMS_OF_SERVICE.md in this folder, or try again from the deployed site.';
+                });
+        })();
+    </script>
+</body>
+</html>
